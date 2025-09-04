@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #640d15;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+header .logo {
+  height: 60px;
+}
+
+header .oab {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero h1 {
+  font-size: 28px;
+  margin: 20px 0 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #333;
+}
+
+.foto {
+  width: 200px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.artigos {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.artigos h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #640d15;
+}
+
+.artigos article {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 4px solid #640d15;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.artigos article h2 {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.artigos article p {
+  color: #555;
+}
+
+.artigos a {
+  color: #640d15;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.artigos a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #640d15;
+  color: white;
+  text-align: center;
+  padding: 15px 10px;
+  margin-top: 30px;
+}
