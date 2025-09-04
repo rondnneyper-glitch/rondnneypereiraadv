@@ -1,31 +1,249 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Escritório de Advocacia</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rondnney Pereira Advocacia — OAB/PI 8.436</title>
+  <meta name="description" content="Atuação estratégica em Direito do Trabalho, Previdenciário, Consumidor e Inventários. Agende sua consulta pelo WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --wine:#640d15;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card:#f7f7f8;
+      --ring:rgba(100,13,21,.25);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink); background:#fff; line-height:1.6;
+    }
+
+    /* ===== Header ===== */
+    .topbar{ background:var(--bg); border-bottom:1px solid #eee; }
+    .container{ width:min(1120px, 92%); margin:auto; }
+    .header{
+      display:flex; align-items:center; gap:24px; padding:14px 0; flex-wrap:wrap;
+    }
+    .header .brand{ display:flex; align-items:center; gap:18px; }
+    .header img.logo{
+      height: clamp(180px, 8vw, 220px); width:auto; display:block;
+    }
+    .header .titleBlock{ display:flex; flex-direction:column; }
+    .header h1{ font-family:Merriweather, serif; font-weight:700; margin:0; font-size: clamp(20px, 2.1vw, 26px); color:var(--wine); }
+    .oab{ color:var(--muted); font-size:14px; margin-top:2px; }
+    .cta-header{ margin-left:auto; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; border:none; cursor:pointer; text-decoration:none;
+      padding:12px 18px; border-radius:999px; font-weight:600; transition:.2s ease-in-out;
+    }
+    .btn.whats{ background:var(--wine); color:#fff; box-shadow:0 6px 16px var(--ring); }
+    .btn.whats:hover{ transform:translateY(-1px); opacity:.95 }
+    .btn.ghost{ background:transparent; border:1px solid var(--wine); color:var(--wine); }
+    .btn i{ font-size:18px }
+
+    /* ===== Hero ===== */
+    .hero{ padding:48px 0 24px; background:linear-gradient(180deg, #fff 0%, #fff 40%, #fafafa 100%); }
+    .heroGrid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center; }
+    .kicker{ color:var(--wine); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; }
+    .hero h2{ font-family:Merriweather, serif; font-size: clamp(28px, 4.2vw, 44px); line-height:1.2; margin:.25rem 0 0; color:var(--wine); }
+    .hero p.sub{ font-size: clamp(15px, 1.5vw, 18px); color:var(--muted); margin:14px 0 22px; }
+    .hero .actions{ display:flex; gap:12px; flex-wrap:wrap }
+    .hero img.photo{
+      width:100%; height:auto; object-fit:contain;
+      border-radius:20px; /* suaviza bordas */
+      filter: drop-shadow(0 10px 26px rgba(0,0,0,.10));
+    }
+
+    /* ===== Áreas ===== */
+    .section{ padding:56px 0 }
+    .section h3{ font-family:Merriweather, serif; font-size: clamp(22px, 2.6vw, 30px); margin:0 0 10px; color:var(--wine); }
+    .section p.lead{ color:var(--muted); margin:0 0 22px }
+    .grid{ display:grid; gap:18px; grid-template-columns: repeat(4, 1fr); }
+    .card{ background:var(--card); border:1px solid #eee; border-radius:var(--radius); padding:18px; transition:.2s; height:100%; }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(0,0,0,.06) }
+    .card h4{ margin:0 0 6px; font-size:18px; color:var(--wine); }
+    .card p{ margin:0; color:var(--muted); font-size:15px; }
+
+    /* ===== Sobre ===== */
+    .about{ background:#fafafa; border-top:1px solid #f0f0f0; border-bottom:1px solid #f0f0f0; }
+    .about .box{ background:#fff; border:1px solid #eee; border-radius:var(--radius); padding:22px; }
+
+    /* ===== Contato ===== */
+    form{ display:grid; gap:12px; grid-template-columns:1fr 1fr; margin-top:10px; }
+    form .full{ grid-column:1 / -1 }
+    label{ font-weight:600; font-size:14px; color:var(--wine); }
+    input, textarea{
+      width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:12px;
+      font:inherit; outline:none; background:#fff;
+    }
+    textarea{ min-height:110px; resize:vertical }
+    input:focus, textarea:focus{ border-color:var(--wine); box-shadow:0 0 0 4px var(--ring) }
+
+    /* ===== Footer ===== */
+    footer{
+      padding:26px 0; color:#6b7280; font-size:14px; text-align:center;
+      border-top:1px solid #eee; background:#fff;
+    }
+    footer strong{ color:var(--wine); }
+
+    /* ===== Responsivo ===== */
+    @media (max-width: 980px){
+      .heroGrid{ grid-template-columns:1fr; }
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px){
+      .grid{ grid-template-columns:1fr }
+      form{ grid-template-columns:1fr }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="logo-container">
-      <img src="logo.jpg" alt="Logo do Escritório" class="logo">
-      <span class="oab">OAB/PI 8.436</span>
+
+  <!-- Header -->
+  <div class="topbar">
+    <div class="container header">
+      <div class="brand">
+        <img src="logo.jpg" alt="Logomarca Rondnney Pereira Advocacia" class="logo" />
+        <div class="titleBlock">
+          <h1>Rondnney Pereira Advocacia</h1>
+          <span class="oab">OAB/PI 8.436</span>
+        </div>
+      </div>
+      <nav class="cta-header">
+        <a class="btn ghost" href="#areas">Áreas</a>
+        <a class="btn ghost" href="#sobre">Sobre</a>
+        <a class="btn whats" href="https://wa.me/5586999872107" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> Agende sua consulta
+        </a>
+      </nav>
     </div>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="artigos.html">Artigos</a>
-    </nav>
-  </header>
-  <main>
-    <section class="hero">
-      <img src="rondnney.png" alt="Imagem de Rondnney" class="foto">
-      <h1>Bem-vindo ao Escritório de Advocacia</h1>
-      <p>Atendimento personalizado com dedicação e ética.</p>
-    </section>
-  </main>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container heroGrid">
+      <div>
+        <div class="kicker">Atuação direta e transparente</div>
+        <h2>Estratégia jurídica com foco no resultado que importa: o seu.</h2>
+        <p class="sub">
+          Assessoria personalizada em Direito do Trabalho, Previdenciário, Consumidor e Inventários —
+          linguagem clara, prazos cumpridos e acompanhamento próximo de cada etapa.
+        </p>
+        <div class="actions">
+          <a class="btn whats" href="https://wa.me/5586999872107?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
+          </a>
+          <a class="btn ghost" href="#contato">Enviar mensagem</a>
+        </div>
+      </div>
+      <div>
+        <img class="photo" src="Rondnney.png" alt="Rondnney Pereira em traje profissional">
+      </div>
+    </div>
+  </section>
+
+  <!-- Áreas de atuação -->
+  <section id="areas" class="section">
+    <div class="container">
+      <h3>Áreas de Atuação</h3>
+      <p class="lead">Atendimento focado e pragmático, do primeiro contato à solução do caso.</p>
+      <div class="grid">
+        <article class="card">
+          <h4><i class="fa-solid fa-briefcase"></i> Direito do Trabalho</h4>
+          <p>Reclamatórias, acordos, verbas rescisórias, horas extras, vínculos e estratégias de negociação.</p>
+        </article>
+        <article class="card">
+          <h4><i class="fa-solid fa-person-cane"></i> Direito Previdenciário</h4>
+          <p>Aposentadorias, auxílios, revisões, BPC/LOAS e planejamento para benefícios.</p>
+        </article>
+        <article class="card">
+          <h4><i class="fa-solid fa-receipt"></i> Direito do Consumidor</h4>
+          <p>Falhas na prestação de serviço, cobranças indevidas, contratos e responsabilidade civil.</p>
+        </article>
+        <article class="card">
+          <h4><i class="fa-solid fa-scale-balanced"></i> Inventários</h4>
+          <p>Inventários judiciais e extrajudiciais, partilhas e orientação sucessória completa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="section about">
+    <div class="container">
+      <h3>Sobre o Advogado</h3>
+      <div class="box">
+        <p><strong>Rondnney Oliveira Pereira</strong> — OAB/PI 8.436. Professor de Direito do Consumidor na FACAPI, ex-Diretor do PROCON Municipal de Campo Maior-PI por 10 anos. Especialista em Direito do Consumidor pela FACULESTE; Especialista em Inventários pela FACULESTE, com curso do Prof. Roberto Ribeiro; e Especialista em Direito e Processo do Trabalho pelo Damásio de Jesus. <strong>Mais de 14 anos de experiência</strong> em atuação contenciosa e consultiva.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato rápido -->
+  <section id="contato" class="section">
+    <div class="container">
+      <h3>Contato Rápido</h3>
+      <p class="lead">Preencha e clique em enviar — vamos abrir uma conversa no WhatsApp com sua mensagem.</p>
+      <form id="zapForm">
+        <div>
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div>
+          <label for="telefone">Telefone</label>
+          <input id="telefone" name="telefone" placeholder="(DDD) Número" inputmode="tel">
+        </div>
+        <div>
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" placeholder="voce@exemplo.com">
+        </div>
+        <div>
+          <label for="assunto">Assunto</label>
+          <input id="assunto" name="assunto" placeholder="Ex.: Revisão de benefício, rescisão, inventário…" required>
+        </div>
+        <div class="full">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Conte rapidamente seu caso"></textarea>
+        </div>
+        <div class="full">
+          <button class="btn whats" type="submit"><i class="fa-brands fa-whatsapp"></i> Enviar pelo WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <footer>
-    <p>Rua José Ovidio Bona, nº 48 - Sala 04 - Centro, Campo Maior-PI</p>
+    © <span id="year"></span> <strong>Rondnney Pereira Advocacia</strong> · OAB/PI 8.436 <br>
+    Rua José Ovidio Bona, nº 48 - Sala 04 - Centro, Campo Maior-PI
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.getElementById('zapForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const numero = '5586999872107';
+      const nome = document.getElementById('nome').value.trim();
+      const tel = document.getElementById('telefone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const assunto = document.getElementById('assunto').value.trim();
+      const msg = document.getElementById('mensagem').value.trim();
+      const texto =
+        `Olá, sou ${nome}.%0A` +
+        (tel ? `Telefone: ${tel}.%0A` : '') +
+        (email ? `E-mail: ${email}.%0A` : '') +
+        `Assunto: ${assunto}.%0A` +
+        (msg ? `%0AMensagem:%0A${encodeURIComponent(msg)}` : '');
+      const url = `https://wa.me/${numero}?text=${texto}`;
+      window.open(url, '_blank', 'noopener');
+    });
+  </script>
 </body>
 </html>
